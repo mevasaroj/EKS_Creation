@@ -1,0 +1,235 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+# VPC Creation
+  eksVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: eks-VPC
+        - Key: Project
+          Value: aws-eks
+
+# Internet Gateway Creation
+  eksInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: eks-InternetGateway
+        - Key: Project
+          Value: aws-eks
+ 
+#Internet Gateway Attached        
+  eksVPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref eksInternetGateway
+      VpcId: !Ref eksVPC
+    
+# Internet Gateway Route Table
+  eksPublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref eksVPC
+      Tags:
+        - Key: Name
+          Value: eks-RouteTable
+        - Key: Project
+          Value: aws-eks
+
+# Route Table
+  eksPublicRoute:
+    DependsOn: eksVPCGatewayAttachment
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref eksPublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref eksInternetGateway
+
+ ## Subnets Creation
+  eksPublicSubnet01:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3a
+      MapPublicIpOnLaunch: true
+      CidrBlock: 10.0.1.0/24
+      VpcId:
+        Ref: eksVPC
+      Tags:
+        - Key: Name
+          Value: eks-PublicSubnet01
+        - Key: Project
+          Value: aws-eks
+          
+  eksPublicSubnet02:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3b
+      MapPublicIpOnLaunch: true
+      CidrBlock: 10.0.2.0/24
+      VpcId:
+        Ref: eksVPC
+      Tags:
+        - Key: Name
+          Value: eks-PublicSubnet02
+        - Key: Project
+          Value: aws-eks
+
+  eksPrivateSubnet01:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3b
+      MapPublicIpOnLaunch: true
+      CidrBlock: 10.0.10.0/24
+      VpcId:
+        Ref: eksVPC
+      Tags:
+        - Key: Name
+          Value: eks-PrivateSubnet01
+        - Key: Project
+          Value: aws-eks
+
+  eksPrivateSubnet02:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3b
+      MapPublicIpOnLaunch: true
+      CidrBlock: 10.0.10.0/24
+      VpcId:
+        Ref: eksVPC
+      Tags:
+        - Key: Name
+          Value: eks-PrivateSubnet02
+        - Key: Project
+          Value: aws-eks
+
+# To allow internet access for worker nodes from each subnet
+  eksPublicSubnet01RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref eksPublicSubnet01
+      RouteTableId: !Ref eksPublicRouteTable
+
+  eksPublicSubnet02RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref eksPublicSubnet02
+      RouteTableId: !Ref eksPublicRouteTable
+
+# Security Groups
+  eksSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Cluster communication with worker nodes
+      VpcId: !Ref eksVPC
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: -1
+          IpProtocol: -1
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: -1
+          IpProtocol: -1
+      Tags:
+        - Key: Name
+          Value: eks-SecurityGroup
+        - Key: Project
+          Value: aws-eks
+
+# EKS IAM Cluster Role
+  eksIAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+              - eks.amazonaws.com
+            Action:
+            - 'sts:AssumeRole'
+      RoleName: EKSClusterRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+
+# EKS Control Plane provisionning
+  eksCluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: EKS
+      Version: 1.18
+      RoleArn:
+        "Fn::GetAtt": ["eksIAMRole", "Arn"]
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - !Ref eksSecurityGroup
+        SubnetIds:
+          - !Ref eksPublicSubnet01
+          - !Ref eksPublicSubnet02
+    DependsOn: [eksIAMRole, eksPublicSubnet01, eksPublicSubnet02, eksSecurityGroup]
+
+# EKS IAM Node Group Role
+  eksNodeInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - !FindInMap [ServicePrincipals, !Ref "AWS::Partition", ec2]
+            Action:
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+        - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonEKS_CNI_Policy"
+        - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      Path: /
+      
+# EKS Core DNS Node Group provisionning     
+  eksNodeGroup:
+    Type: AWS::EKS::Nodegroup
+    Properties:
+      ClusterName: EKS
+      NodeRole: 
+        "Fn::GetAtt": ["eksNodeInstanceRole", "Arn"]
+      AmiType: AL2_x86_64
+      InstanceTypes: 
+        - t3.medium
+      NodegroupName: NodeGroup01
+      RemoteAccess:
+        Ec2SshKey: my-eks-key
+      ScalingConfig:
+        MinSize: 2
+        DesiredSize: 2
+        MaxSize: 6
+      Labels:
+        Project: aws-eks
+      Subnets:
+        - !Ref eksPublicSubnet01
+        - !Ref eksPublicSubnet02
+    DependsOn: [eksCluster, eksNodeInstanceRole]
+
+
+  eksfargateruntime:
+    Type: AWS::EKS::FargateProfile
+    Properties:
+      ClusterName: eksCluster
+      FargateProfileName: eks-fargate-profile
+      PodExecutionRoleArn: ekspodexecutionrole.Arn
+      Selectors:
+        - Namespace: ApplicationName
+      Subnets:
+        - !Ref eksPrivateSubnet01
+        - !Ref eksPrivateSubnet02
+      Tags: 
+        - eksfargateprofile
+
+
+
