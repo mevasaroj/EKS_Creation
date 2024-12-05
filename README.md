@@ -1,4 +1,4 @@
-# Private EKS Cluster Creation
+![image](https://github.com/user-attachments/assets/f84532e4-66d6-4d0b-b0bb-3a0aa14c10ff)# Private EKS Cluster Creation
 1 - Prerequisite
  - AWS Account
  - VPC & Subnet
@@ -26,7 +26,13 @@
       - pods-subnet-azc - 100.x.x.x/22
 
   B. Following IAM Roles & Policy Must be created.
-    - a
+    - AWSServiceRoleForAmazonEKS
+    - Cluster-Role
+    - WorkerNode-Role
+    - TFE / Terraform 
+
+
+
     - 
     - 
     - 
