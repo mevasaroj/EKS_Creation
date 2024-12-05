@@ -26,8 +26,12 @@
       - pods-subnet-azc - 100.x.x.x/22
 
   B. Following IAM Roles & Policy Must be created.
-   - 
-
+    - a
+    - 
+    - 
+    - 
+    -
+    -
   C. Following Security and Rule Must be created.
 
 
