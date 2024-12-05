@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f84532e4-66d6-4d0b-b0bb-3a0aa14c10ff)# Private EKS Cluster Creation
+# Private EKS Cluster Creation
 1 - Prerequisite
  - AWS Account
  - VPC & Subnet
