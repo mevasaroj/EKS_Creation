@@ -7,6 +7,7 @@
  - Terraform CLI / TFE Eenterprise
  
 2 - Network Prerequisite
+
   A. Following VPC & Subnet are to be created.
   
    - VPC Creation : It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below --> All Subnet are Private.
