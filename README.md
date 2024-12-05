@@ -25,15 +25,12 @@
       - pods-subnet-azb - 100.x.x.x/22
       - pods-subnet-azc - 100.x.x.x/22
 
-  B. Following Security and Rule Must be created.
+  B. Following IAM Roles & Policy Must be created.
+
+  C. Following Security and Rule Must be created.
 
 
-  C. Following VPC Endpoint Must be created.
-
-
-  A. Following VPC & Subnet are to be created.
-
-  A. Following VPC & Subnet are to be created.
+  D. Following VPC Endpoint Must be created.
 
 
       
