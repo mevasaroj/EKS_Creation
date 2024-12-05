@@ -57,7 +57,26 @@
 
 
    - WorkerNode-Role
-
+       - Open IAM --> Roles --> Create Role
+       - Under = Select Trusted entity type
+           - Trusted entity type : AWS service
+           - Use cases : type "ec2" --> Select "ec2" --> First Option
+       - Under Add permission : Add Following Permission policies
+           - AmazonEKSWorkerNodePolicy
+           - AmazonEC2ContainerRegistryReadOnly
+           - AmazonSSMManagedInstanceCore
+           - AmazonEKS_CNI_Policy
+           - AmazonEFSCSIDriverPolicy --> Optional for EFS if same role using for EFS for Pods as external Device
+           - AmazonEBSCSIDriverPolicy --> Optional for EBS if same role using for EBS for Pods as external Device
+           - AmazonEC2RoleforSSM --> Optional for SSM
+           - 
+       - Under Name, review, and create
+           - Role Name : eks-cluster-role
+           - Description : No Changes
+           - Step 1: Select trusted entities : No Changes
+           - Step 2: Add permissions: No Changes
+           - Step 3: Add Tags : Add the require tags
+       - Create Role
   
     - 
     - 
