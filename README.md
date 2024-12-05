@@ -53,7 +53,8 @@
            - Step 3: Add Tags : Add the require tags
        - Create Role
 
-       - 
+   - Add KMS Key Policy to  eks-cluster-role
+
 
    - WorkerNode-Role
 
