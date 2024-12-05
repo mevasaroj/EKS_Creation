@@ -30,6 +30,11 @@
    - TFE / Terraform Role
 
    - AWSServiceRoleForAmazonEKS Role
+       - Open IAM --> Roles --> Create Role
+       - Use cases for other AWS services: type "EKS" --> Select "EKS" - First Option
+       - Add permission : (Default) --> No Changes
+       - Name = Default = AWSServiceRoleForAmazonEKS --> No Changes
+       - Click -- Create
 
 
    - Cluster-Role
