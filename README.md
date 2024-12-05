@@ -9,22 +9,19 @@
 2 - Network Prerequisite 
   A. Following VPC & Subnet are to be created.
    - VPC Creation : It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below --> All Subnet are Private.
-   - ----------------------------------------------------------------------------------------------------------------------
-   - | VPC CIDR NAME |  VPC CIDR     | SUBNET CIDR |        Description                                    |  Subnet-Name  |
-   - ---------------------------------------------------------------------------------------------------------------------- 
-   - |                |              | 10.x.x.x/24   |  worker node EKS managed by user for Zone 1         |  dp-subnet-aza | 
-   - |                |              | 10.x.x.x/24   |  worker node EKS managed by user for Zone 2         |  dp-subnet-azb |
-   - |   Primary CIDR | 10.x.x.x/23  | 10.x.x.x/24   |  worker node EKS managed by user for Zone 3         |  dp-subnet-azc |
-   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 1           |  cp-subnet-aza |
-   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 2           |  cp-subnet-azb |
-   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 3           |  cp-subnet-azc |
-   - ------------------------------------------------------------------------------------------------------------------------ 
-   - |                |              | 100.x.x.x/22  | for container and Pods managed by user for Zone 1   | pods-subnet-aza |
-   - | Secondary CIDR | 100.x.x.x/20 | 100.x.x.x/22  | for container and Pods managed by user for Zone 2   | pods-subnet-azb |
-   - |                |              | 100.x.x.x/22  | for container and Pods managed by user for Zone 3   | pods-subnet-azc |
-   - ------------------------------------------------------------------------------------------------------------------------ 
-
-
+   - Dataplane Subnet / Workernode Subnet Managed by End User
+      - dp-subnet-aza - 10.x.x.x/24
+      - dp-subnet-azb - 10.x.x.x/24
+      - dp-subnet-azc - 10.x.x.x/24
+   - Control Plane Subnet Managed by AWS
+      - cp-subnet-aza - 10.x.x.x/28
+      - cp-subnet-azb - 10.x.x.x/28
+      - cp-subnet-azc - 10.x.x.x/28
+   - Pods & Container Seondary Subnet Managed by End User
+      - pods-subnet-aza - 100.x.x.x/22
+      - pods-subnet-azb - 100.x.x.x/22
+      - pods-subnet-azc - 100.x.x.x/22
+  
    - Subnets creation: Created 4 Subnets - 2 Public and 2 Private
    - To allow internet access for worker nodes from each subnet it's necessary to associate each Public Subnet to the eks-RouteTable. 
    - Security Groups: SG is a set of rules with fine granularity to allow communication towards a resource
