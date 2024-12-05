@@ -26,14 +26,18 @@
       - pods-subnet-azc - 100.x.x.x/22
 
   B. Following IAM Roles & Policy Must be created.
+
+   - TFE / Terraform Role
+
+   - AWSServiceRoleForAmazonEKS Role
+
+
+   - Cluster-Role
+
+
+   - WorkerNode-Role
+
   
-    - AWSServiceRoleForAmazonEKS
-    - Cluster-Role
-    - WorkerNode-Role
-    - TFE / Terraform 
-
-
-
     - 
     - 
     - 
