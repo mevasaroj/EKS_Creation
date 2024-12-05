@@ -1,15 +1,30 @@
-# EKS_Creation
+# Private EKS Cluster Creation
 1 - Prerequisite
  - AWS Account
+ - VPC & Subnet
  - AWS Command Line Interface (CLI)
  - GIT Source Code Management (SCM)
- - Kubectl
+ - Terraform CLI / TFE Eenterprise
  
-2 - Infrastructure Deployment
- - Networking Setup
-   - VPC Creation : Create a VPC called eks-VPC 
-   - Internet Gateway: Internet Gateway (IGW) is a resource that allows communication between your VPC and internet.
-   - Route Table: A public route table is necessary to declare all routes that will be used by the VPC. 
+2 - Network Prerequisite 
+  A. Following VPC & Subnet are to be created.
+   - VPC Creation : It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below --> All Subnet are Private.
+   - ----------------------------------------------------------------------------------------------------------------------
+   - | VPC CIDR NAME |  VPC CIDR     | SUBNET CIDR |        Description                                    |  Subnet-Name  |
+   - ---------------------------------------------------------------------------------------------------------------------- 
+   - |                |              | 10.x.x.x/24   |  worker node EKS managed by user for Zone 1         |  dp-subnet-aza | 
+   - |                |              | 10.x.x.x/24   |  worker node EKS managed by user for Zone 2         |  dp-subnet-azb |
+   - |   Primary CIDR | 10.x.x.x/23  | 10.x.x.x/24   |  worker node EKS managed by user for Zone 3         |  dp-subnet-azc |
+   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 1           |  cp-subnet-aza |
+   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 2           |  cp-subnet-azb |
+   - |                |              | 10.x.x.x/28   |  control plane managed by user for Zone 3           |  cp-subnet-azc |
+   - ------------------------------------------------------------------------------------------------------------------------ 
+   - |                |              | 100.x.x.x/22  | for container and Pods managed by user for Zone 1   | pods-subnet-aza |
+   - | Secondary CIDR | 100.x.x.x/20 | 100.x.x.x/22  | for container and Pods managed by user for Zone 2   | pods-subnet-azb |
+   - |                |              | 100.x.x.x/22  | for container and Pods managed by user for Zone 3   | pods-subnet-azc |
+   - ------------------------------------------------------------------------------------------------------------------------ 
+
+
    - Subnets creation: Created 4 Subnets - 2 Public and 2 Private
    - To allow internet access for worker nodes from each subnet it's necessary to associate each Public Subnet to the eks-RouteTable. 
    - Security Groups: SG is a set of rules with fine granularity to allow communication towards a resource
