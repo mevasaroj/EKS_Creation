@@ -24,7 +24,19 @@
       - pods-subnet-aza - 100.x.x.x/22
       - pods-subnet-azb - 100.x.x.x/22
       - pods-subnet-azc - 100.x.x.x/22
-  
+
+  B. Following Security and Rule Must be created.
+
+
+  C. Following VPC Endpoint Must be created.
+
+
+  A. Following VPC & Subnet are to be created.
+
+  A. Following VPC & Subnet are to be created.
+
+
+      
    - Subnets creation: Created 4 Subnets - 2 Public and 2 Private
    - To allow internet access for worker nodes from each subnet it's necessary to associate each Public Subnet to the eks-RouteTable. 
    - Security Groups: SG is a set of rules with fine granularity to allow communication towards a resource
