@@ -36,15 +36,24 @@
            - Use cases : type "EKS" --> Select "EKS Service" --> First Option
        - Under Add permission : (Default) --> No Changes
        - Under Name, review, and create : Default = AWSServiceRoleForAmazonEKS --> No Changes
-       - Click -- Create role
+       - Create role
 
 
    - Cluster-Role
        - Open IAM --> Roles --> Create Role
-       - Use cases for other AWS services: type "EKS" --> Select "EKS" - First Option
-       - Add permission : (Default) --> No Changes
-       - Name = Default = AWSServiceRoleForAmazonEKS --> No Changes
-       - Click -- Create
+       - Under = Select Trusted entity type
+           - Trusted entity type : AWS service
+           - Use cases : type "EKS" --> Select "EKS Cluster" --> Second Option
+       - Under Add permission : (Default) --> No Changes
+       - Under Name, review, and create
+           - Role Name : eks-cluster-role
+           - Description : No Changes
+           - Step 1: Select trusted entities : No Changes
+           - Step 2: Add permissions: No Changes
+           - Step 3: Add Tags : Add the require tags
+       - Create Role
+
+       - 
 
    - WorkerNode-Role
 
