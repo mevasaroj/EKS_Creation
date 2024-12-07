@@ -17,14 +17,14 @@
          - dp-subnet-aza - 10.x.x.x/24
          - dp-subnet-azb - 10.x.x.x/24
          - dp-subnet-azc - 10.x.x.x/24
-         - 
+           
      - Pods & Container Seondary Subnet Managed by End User --> Secondary CIDR RANGE
          - pods-subnet-aza - 100.x.x.x/22
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
-5.
-6.
-7.
+2.
+3.
+4.
 8.
 9.
 10.
