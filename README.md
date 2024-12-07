@@ -23,7 +23,7 @@
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-3. Create the following IAM Roles & Policy.   
+3. Create the following IAM Roles & Policy.  
    - AWSServiceRoleForAmazonEKS Role for EKS Cluster
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
@@ -103,41 +103,35 @@
 
 
 
-     {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn of eks-workernode-role",
-                "Service": "ec2.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::385089911239:oidc-provider/oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:aud": "sts.amazonaws.com",
-                    "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:sub": [
-                   "system:serviceaccount:kube-system:efs-csi-controller-sa",
-                        "system:serviceaccount:kube-system:ebs-csi-controller-sa"
-                    ]
-                }
-            }
-        }
-    ]
-  }
   
-4. 
+4. Create the following Security Group for Private connection.
+   - eks-cluster-addition-security-group
+     -
+     -
+     -
+     -
+     - a
+   - eks-cluster-workernode-security-group
+     -
+     -
+     -
+     -
+     - a
+   - vpc-endpoint-security-group
+     -
+     -
+     -
+     - a
+
+
+
+
+
+6. Create the following VPC endpoints for Private connection.
        
 
   
-5. 
+7. 
   
 
    -
