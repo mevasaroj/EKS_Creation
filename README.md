@@ -1,4 +1,4 @@
-# Private EKS Cluster Creation
+![image](https://github.com/user-attachments/assets/551db24a-4202-479f-b6ad-6707185c2064)# Private EKS Cluster Creation
 1. Prerequisite
    - 
      - AWS Account
@@ -116,8 +116,6 @@
         - ]
        - }
 
-
-
   
 4. Create the following Security Group for Private connection.
    - 
@@ -145,19 +143,25 @@
 
 5. Create the following VPC endpoints for Private connection.
    -
-   - eks-cluster-addition-security-group
+   - com.amazonaws.region.s3 - (Gateway Type)
      -
      -
      -
      -
      - a
-   - eks-cluster-workernode-security-group
+   - com.amazonaws.region.ec2 (Interface)
      -
      -
      -
      -
      - a
-   - vpc-endpoint-security-group
+   - Create following interface endpoint as created above
+     - 
+     - com.amazonaws.region.ecr.api (Interface)
+     - com.amazonaws.region.ecr.dkr (Interface)
+     - com.amazonaws.region.sts (Interface)
+     - com.amazonaws.region-code.eks (Interface)
+     - com.amazonaws.region-code.eks-auth (Interface)
      -
      -
      -
