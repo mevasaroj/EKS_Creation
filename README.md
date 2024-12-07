@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/551db24a-4202-479f-b6ad-6707185c2064)# Private EKS Cluster Creation
+![image](https://github.com/user-attachments/assets/551db24a-4202-479f-b6ad-6707185c2064)
+# Private EKS Cluster Creation
 1. Prerequisite
    - 
      - AWS Account
