@@ -32,8 +32,8 @@
        - Under Add permission : (Default) --> No Changes
        - Under Name, review, and create : Default = AWSServiceRoleForAmazonEKS --> No Changes
        - Create role
-   
-   -Cluster-Role for EKS Cluster Creation
+         
+   - Cluster-Role for EKS Cluster Creation
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
            - Trusted entity type : AWS service
