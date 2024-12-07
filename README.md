@@ -117,7 +117,8 @@
 
 
   
-7. Create the following Security Group for Private connection.
+4. Create the following Security Group for Private connection.
+   - 
    - eks-cluster-addition-security-group
      -
      -
@@ -140,8 +141,25 @@
 
 
 
-8. Create the following VPC endpoints for Private connection.
-       
+5. Create the following VPC endpoints for Private connection.
+   -
+   - eks-cluster-addition-security-group
+     -
+     -
+     -
+     -
+     - a
+   - eks-cluster-workernode-security-group
+     -
+     -
+     -
+     -
+     - a
+   - vpc-endpoint-security-group
+     -
+     -
+     -
+     - a
 
   
 9. 
