@@ -7,8 +7,10 @@
      - Terraform CLI / TFE Eenterprise
        
 2. Network Prerequisite
-2.1. Control Plane SUbnet
-   2.2.a
+   2.2.
+   2.3.
+   2.4.
+   a
    
    
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
