@@ -6,8 +6,9 @@
      - GIT Source Code Management (SCM)
      - Terraform CLI / TFE Eenterprise
        
-2.
-3.
+2. Network Prerequisite
+     - Following Subnet &  VPC are to be created.
+     - 
 4.
 5.
 6.
@@ -18,6 +19,7 @@
 11.
 12.
 13.
+14.
 13.
 14.
 15.
@@ -28,9 +30,9 @@
 20.
 21.
 22. a 
-2. Network Prerequisite
+2. 
   
-  2.1. Following Subnet &  VPC are to be created.
+  2.1. 
   
    - VPC Creation : It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below --> All Subnet are Private.
      
