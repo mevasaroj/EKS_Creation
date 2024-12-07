@@ -7,6 +7,7 @@
      - Terraform CLI / TFE Eenterprise
        
 2. Network Prerequisite
+   2.1. Control Plane SUbnet
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
    2.1. Control Plane Subnet = Managed by AWS --> Primary CIDR RANGE
          - cp-subnet-aza - 10.x.x.x/28
@@ -23,7 +24,7 @@
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-3. Create the following IAM Roles & Policy.
+4. Create the following IAM Roles & Policy.
    - AWSServiceRoleForAmazonEKS Role for EKS Cluster
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
