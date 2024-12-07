@@ -1,5 +1,5 @@
 # Private EKS Cluster Creation
-1. Prerequisite
+- 1. Prerequisite
  - AWS Account
  - VPC & Subnet
  - AWS Command Line Interface (CLI)
