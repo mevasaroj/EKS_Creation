@@ -96,6 +96,7 @@
           - "Action": "sts:AssumeRole"         
         - },
         - Below will be added post cluster created, as it require EKS-oidc-arn.
+          - 
         - {
           - "Effect": "Allow",
           - "Principal": {
