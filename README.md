@@ -1,5 +1,5 @@
 # Private EKS Cluster Creation
-1 - Prerequisite
+1. Prerequisite
  - AWS Account
  - VPC & Subnet
  - AWS Command Line Interface (CLI)
@@ -7,7 +7,7 @@
  - Terraform CLI / TFE Eenterprise
  
 2 - Network Prerequisite
-
+  
   2.1. Following Subnet &  VPC are to be created.
   
    - VPC Creation : It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below --> All Subnet are Private.
