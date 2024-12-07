@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/551db24a-4202-479f-b6ad-6707185c2064)
 # Private EKS Cluster Creation
 1. Prerequisite
    - 
@@ -83,7 +82,7 @@
        - Create Role.
    - Add KMS Key Permission to Above WorkerNode Role
      - 
-   - Edit the WorkerNode-Role Trust-Relationship as Mention Below
+   - [Edit the WorkerNode-Role Trust-Relationship as Mention Below](https://github.com/mevasaroj/EKS_Creation/blob/main/WorkerNode-Role-trust-Relationship.txt)
      - 
       - {
       - "Version": "2012-10-17",
