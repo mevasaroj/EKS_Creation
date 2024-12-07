@@ -23,7 +23,21 @@
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-3. Following IAM Roles & Policy Must be created.
+3. Create the following IAM Roles & Policy.
+   - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
+   -
+   -
+   -
+   -
+   -
+   -
+   -
+   -
+   - a
+
+
+
+
 3.
 4.
 8.
