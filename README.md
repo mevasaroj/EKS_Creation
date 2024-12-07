@@ -8,21 +8,22 @@
        
 2. Network Prerequisite
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
-     - Control Plane Subnet Managed by AWS --> Primary CIDR RANGE
+     - Control Plane Subnet = Managed by AWS --> Primary CIDR RANGE
          - cp-subnet-aza - 10.x.x.x/28
          - cp-subnet-azb - 10.x.x.x/28
          - cp-subnet-azc - 10.x.x.x/28
       
-     - Dataplane Subnet / Workernode Subnet Managed by End User --> Primary CIDR RANGE
+     - Dataplane Subnet / Workernode Subnet = Managed by End User --> Primary CIDR RANGE
          - dp-subnet-aza - 10.x.x.x/24
          - dp-subnet-azb - 10.x.x.x/24
          - dp-subnet-azc - 10.x.x.x/24
            
-     - Pods & Container Seondary Subnet Managed by End User --> Secondary CIDR RANGE
+     - Pods & Container Seondary Subnet = Managed by End User --> Secondary CIDR RANGE
          - pods-subnet-aza - 100.x.x.x/22
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
-2.
+           
+3. Following IAM Roles & Policy Must be created.
 3.
 4.
 8.
@@ -44,26 +45,9 @@
 22. a 
 2. 
   
-  2.1. 
-  
-   - VPC Creation :  --> All Subnet are Private.
-     
-   2.1.1. 
-         - 
-         - 
-         - 
-         
-   2.1.2. 
-         - 
-         - 
-         - 
-         
-   2.1.3. 
-         - 
-         - 
-         - 
 
-  2.2. Following IAM Roles & Policy Must be created.
+
+  2.2. 
 
    - TFE / Terraform Role
 
