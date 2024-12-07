@@ -95,16 +95,17 @@
           - },
           - "Action": "sts:AssumeRole"         
         - },
+        - Below will be added post cluster created, as it require EKS-oidc-arn.
         - {
           - "Effect": "Allow",
           - "Principal": {
-            - "Federated": "arn:aws:iam::385089911239:oidc-provider/oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4"           
+            - "Federated": "arn:aws:iam::xxxxxxxxx:oidc-provider/eks-oidc-arn"           
           - },
           - "Action": "sts:AssumeRoleWithWebIdentity",
           - "Condition": {
             - "StringEquals": {
-              - "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:aud": "sts.amazonaws.com",
-              - "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:sub": [
+              - "eks-oidc-arn:aud": "sts.amazonaws.com",
+              - "eks-oidc-arn:sub": [
                 - "system:serviceaccount:kube-system:efs-csi-controller-sa",
                 - "system:serviceaccount:kube-system:ebs-csi-controller-sa"               
               - ]
