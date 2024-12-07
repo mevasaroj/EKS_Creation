@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "workernode-role-arn",
+                "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Federated": "arn:aws:iam::xxxxxxx:oidc-provider/eks-oidc-arn"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                "StringEquals": {
+                    "eks-oidc-arn:aud": "sts.amazonaws.com",
+                    "eks-oidc-arn:sub": [
+                        "system:serviceaccount:kube-system:efs-csi-controller-sa",
+                        "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+                    ]
+                }
+            }
+        }
+    ]
+}
