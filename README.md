@@ -71,7 +71,7 @@
        - Create Role.
    - Add KMS Key Permission to Above WorkerNode Role
    - Edit the WorkerNode-Role Trust-Relationship as Mention Below
-    - {
+      - {
       - "Version": "2012-10-17",
       - "Statement": [
         - {
@@ -96,10 +96,10 @@
                 - "system:serviceaccount:kube-system:ebs-csi-controller-sa"               
               - ]
             - }
-        - }
-      - }
-     - ]
-    - }
+           - }
+         - }
+        - ]
+       - }
   
 4. 
        
