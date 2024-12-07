@@ -8,6 +8,9 @@
        
 2. Network Prerequisite
    2.1. Control Plane SUbnet
+   2.2.a
+   
+   
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
    2.1. Control Plane Subnet = Managed by AWS --> Primary CIDR RANGE
          - cp-subnet-aza - 10.x.x.x/28
