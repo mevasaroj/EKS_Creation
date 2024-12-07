@@ -48,8 +48,7 @@
        - Create Role
 
    - Add KMS Key Permission to Above cluster-role
-
-
+     
    - WorkerNode-Role for Workernode (ec2)
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
@@ -70,8 +69,16 @@
            - Step 2: Add permissions: No Changes
            - Step 3: Add Tags : Add the require tags
        - Create Role.
-   
    - Add KMS Key Permission to Above WorkerNode Role
+   - Edit the WorkerNode-Role Trust-Relationship as Mention Below
+      {
+       "Version": "2012-10-17",
+       "Statement": [
+         {
+           "Effect": "Allow",
+           "Principal": {
+         }
+     }
   
 4. 
   
@@ -119,35 +126,7 @@
    - Edit Trust RelationShip for eks-workernode-role as follow
 
 
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn of eks-workernode-role",
-                "Service": "ec2.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        },
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::385089911239:oidc-provider/oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:aud": "sts.amazonaws.com",
-                    "oidc.eks.ap-south-1.amazonaws.com/id/A6A20B8F7F1690F755A1D372370FF5C4:sub": [
-                        "system:serviceaccount:kube-system:efs-csi-controller-sa",
-                        "system:serviceaccount:kube-system:ebs-csi-controller-sa"
-                    ]
-                }
-            }
-        }
-    ]
-}
+
 
     -
     -
