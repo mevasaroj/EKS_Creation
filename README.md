@@ -6,7 +6,7 @@
      - GIT Source Code Management (SCM)
      - Terraform CLI / TFE Eenterprise
        
-3. Network Prerequisite3. 
+2. Network Prerequisite3. 
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
      - Control Plane Subnet = Managed by AWS --> Primary CIDR RANGE
          - cp-subnet-aza - 10.x.x.x/28
@@ -23,7 +23,7 @@
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-4. Create the following IAM Roles & Policy.   
+3. Create the following IAM Roles & Policy.   
    - AWSServiceRoleForAmazonEKS Role for EKS Cluster
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
@@ -49,6 +49,7 @@
 
    - Add KMS Key Permission to Above cluster-role
 
+
    - WorkerNode-Role for Workernode (ec2)
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
@@ -71,6 +72,10 @@
        - Create Role.
    
    - Add KMS Key Permission to Above WorkerNode Role
+  
+4. 
+  
+
    -
    -
    -
