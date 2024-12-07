@@ -1,3 +1,4 @@
+## Before EKS Cluster Creation
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -9,6 +10,9 @@
             },
             "Action": "sts:AssumeRole"
         },
+
+## Add Below contents post EKS Cluster Creation
+
         {
             "Effect": "Allow",
             "Principal": {
