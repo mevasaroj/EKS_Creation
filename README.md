@@ -24,7 +24,23 @@
          - pods-subnet-azc - 100.x.x.x/22
            
 3. Create the following IAM Roles & Policy.
-   - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
+   - AWSServiceRoleForAmazonEKS Role for EKS Cluster
+       - Open IAM --> Roles --> Create Role
+       - Under = Select Trusted entity type
+           - Trusted entity type : AWS service
+           - Use cases : type "EKS" --> Select "EKS Service" --> First Option
+       - Under Add permission : (Default) --> No Changes
+       - Under Name, review, and create : Default = AWSServiceRoleForAmazonEKS --> No Changes
+       - Create role
+   -
+   -
+   -
+   -
+   -Cluster-Role for EKS Cluster Creation
+   -
+   -
+   - WorkerNode-Role for Workernode (ec2)
+   -
    -
    -
    -
@@ -65,7 +81,7 @@
 
    - TFE / Terraform Role
 
-   - AWSServiceRoleForAmazonEKS Role
+   - 
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
            - Trusted entity type : AWS service
