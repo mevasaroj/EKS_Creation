@@ -18,17 +18,21 @@
          - cp-subnet-azc - 10.x.x.x/28
       
      - Dataplane Subnet / Workernode Subnet = Managed by End User --> Primary CIDR RANGE
+       - 
          - dp-subnet-aza - 10.x.x.x/24
          - dp-subnet-azb - 10.x.x.x/24
          - dp-subnet-azc - 10.x.x.x/24
            
      - Pods & Container Seondary Subnet = Managed by End User --> Secondary CIDR RANGE
+       - 
          - pods-subnet-aza - 100.x.x.x/22
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-5. Create the following IAM Roles & Policy.  
+3. Create the following IAM Roles & Policy.
+   - 
    - AWSServiceRoleForAmazonEKS Role for EKS Cluster
+     - 
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
            - Trusted entity type : AWS service
@@ -38,6 +42,7 @@
        - Create role
          
    - Cluster-Role for EKS Cluster Creation
+     - 
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
            - Trusted entity type : AWS service
@@ -52,8 +57,10 @@
        - Create Role
 
    - Add KMS Key Permission to Above cluster-role
+     - 
      
    - WorkerNode-Role for Workernode (ec2)
+     - 
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
            - Trusted entity type : AWS service
@@ -74,6 +81,7 @@
            - Step 3: Add Tags : Add the require tags
        - Create Role.
    - Add KMS Key Permission to Above WorkerNode Role
+     - 
    - Edit the WorkerNode-Role Trust-Relationship as Mention Below
       - {
       - "Version": "2012-10-17",
@@ -108,7 +116,7 @@
 
 
   
-6. Create the following Security Group for Private connection.
+7. Create the following Security Group for Private connection.
    - eks-cluster-addition-security-group
      -
      -
@@ -131,11 +139,11 @@
 
 
 
-7. Create the following VPC endpoints for Private connection.
+8. Create the following VPC endpoints for Private connection.
        
 
   
-8. 
+9. 
   
 
    -
