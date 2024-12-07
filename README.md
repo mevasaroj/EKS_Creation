@@ -1,12 +1,13 @@
 # Private EKS Cluster Creation
 1. Prerequisite
+   - abs
      - AWS Account
      - VPC & Subnet
      - AWS Command Line Interface (CLI)
      - GIT Source Code Management (SCM)
      - Terraform CLI / TFE Eenterprise
        
-2. Network Prerequisite3. 
+3. Network Prerequisite3. 
    - It assume VPC and following Subnet are already Provisioned / If not Create the VPC and Subnet mentioned Below
      - Control Plane Subnet = Managed by AWS --> Primary CIDR RANGE
          - cp-subnet-aza - 10.x.x.x/28
@@ -23,7 +24,7 @@
          - pods-subnet-azb - 100.x.x.x/22
          - pods-subnet-azc - 100.x.x.x/22
            
-3. Create the following IAM Roles & Policy.   
+4. Create the following IAM Roles & Policy.   
    - AWSServiceRoleForAmazonEKS Role for EKS Cluster
        - Open IAM --> Roles --> Create Role
        - Under = Select Trusted entity type
