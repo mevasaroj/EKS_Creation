@@ -7,7 +7,7 @@
      - Terraform CLI / TFE Eenterprise
        
 2. Network Prerequisite
-   2.1. Control Plane SUbnet
+   - 2.1. Control Plane SUbnet
    2.2.a
    
    
