@@ -7,7 +7,7 @@
      - Terraform CLI / TFE Eenterprise
        
 2. Network Prerequisite
-     - Following Subnet &  VPC are to be created.
+   - Following Subnet &  VPC are to be created.
      - 
 4.
 5.
